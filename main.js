@@ -8,7 +8,9 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 1000, height: 600, titleBarStyle: 'hidden', icon: path.join(__dirname, 'assets/messages_96dp.png')})
 
   mainWindow.on('closed', function () {
-    mainWindow = null
+    if (process.platform != 'darwin') {
+      mainWindow = null;
+    }
   })
   mainWindow.loadURL("https://messages.android.com/");
 }
